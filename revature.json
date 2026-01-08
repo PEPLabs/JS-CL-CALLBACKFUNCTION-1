@@ -1,0 +1,15 @@
+{
+  "type": "java",
+  "testFiles": [
+    {
+      "path": "src/test/java/SeleniumTest.java",
+      "testCases": [
+        {
+          "methodName": "testPageText",
+          "label": "Verify page text content",
+          "description": "Checks that the HTML page displays the expected text in elements with IDs 'opening' and 'theRest'."
+        }
+      ]
+    }
+  ]
+}
