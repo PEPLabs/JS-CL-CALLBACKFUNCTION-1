@@ -16,17 +16,17 @@ public class SeleniumTest {
     @Before
     public void setUp() {
 
-        // Keep your exact string, but normalize it (portable fix)
-        File chromeDriver = new File("driver/chromedriver");
-        System.setProperty("webdriver.chrome.driver", chromeDriver.getAbsolutePath());
+        // REQUIRED by Old extension – do not change
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
 
+        // Load local HTML file
         File file = new File("index.html");
         String path = "file://" + file.getAbsolutePath();
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
-        webDriver = new ChromeDriver(options);
 
+        webDriver = new ChromeDriver(options);
         webDriver.get(path);
     }
 
@@ -41,6 +41,7 @@ public class SeleniumTest {
     public void testPageText() throws InterruptedException {
         WebElement speechPart1 = webDriver.findElement(By.id("opening"));
         String opening = "To be, or not to be, that is the question:";
+
         WebElement speechPart2 = webDriver.findElement(By.id("theRest"));
         String theRest = "Whether 'tis nobler in the mind to suffer";
 
@@ -50,3 +51,4 @@ public class SeleniumTest {
         Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
     }
 }
+
