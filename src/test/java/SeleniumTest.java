@@ -13,28 +13,27 @@ import java.io.File;
 public class SeleniumTest {
     private WebDriver webDriver;
 
-    @Before
+       @Before
     public void setUp() {
-
-        // REQUIRED by Old extension – do not change
+        // REQUIRED by old extension – do not change
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
 
-        // Load local HTML file
+        // Get file
         File file = new File("index.html");
         String path = "file://" + file.getAbsolutePath();
 
+        // Create a new ChromeDriver instance
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
-
         webDriver = new ChromeDriver(options);
+
+        // Open the HTML file
         webDriver.get(path);
     }
 
     @After
-    public void tearDown() {
-        if (webDriver != null) {
-            webDriver.quit();
-        }
+    public void teardown() {
+        webDriver.quit();
     }
 
     @Test
@@ -51,4 +50,5 @@ public class SeleniumTest {
         Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
     }
 }
+
 
