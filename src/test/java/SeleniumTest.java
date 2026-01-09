@@ -14,7 +14,7 @@ public class SeleniumTest {
     private WebDriver webDriver;
 
        @Before
-    public void setUp() {
+        public void setUp() {
         // REQUIRED by old extension – do not change
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
 
@@ -50,5 +50,6 @@ public class SeleniumTest {
         Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
     }
 }
+
 
 
